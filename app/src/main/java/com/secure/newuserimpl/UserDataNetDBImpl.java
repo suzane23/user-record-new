@@ -8,11 +8,6 @@ import com.secure.newuserimpl.requests.UserNetworkDBDeleteRecordByNameRequest;
 import com.secure.newuserimpl.requests.UserNetworkDBGetAllRecordsRequest;
 import com.secure.newuserimpl.requests.UserNetworkDBGetRecordsCountRequest;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Map;
-import java.util.Set;
-
 public class UserDataNetDBImpl extends UserDataBaseImpl {
 
     @Override
@@ -23,33 +18,6 @@ public class UserDataNetDBImpl extends UserDataBaseImpl {
     @Override
     public void init(Context context) {
         super.init(context);
-    }
-
-    private HttpURLConnection getConnection(String connURL, String method, Map<String, String> headers){
-        HttpURLConnection connection = null;
-        try {
-            URL url = new URL(connURL);
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod(method);
-            if(method.equals("POST")) {
-                connection.setDoOutput(true);
-            }
-
-            if(null != headers) {
-                Set<Map.Entry<String, String>> headerSet = headers.entrySet();
-
-                for (Map.Entry<String, String> entry : headerSet) {
-                    connection.setRequestProperty(entry.getKey(), entry.getValue());
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return connection;
-
-
     }
 
     @Override
