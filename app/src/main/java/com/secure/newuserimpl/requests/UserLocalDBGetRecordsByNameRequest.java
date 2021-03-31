@@ -11,25 +11,22 @@ import com.secure.newuserimpl.UserRecord;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserGetRecordsByNameRequest extends UserBaseRequest {
+public class UserLocalDBGetRecordsByNameRequest extends UserBaseRequest {
 
     private String searchName;
     private SQLiteWrapper sqLiteWrapper;
 
 
 
-    public UserGetRecordsByNameRequest(RequestType requestType, IUserDataCallBack callBack, String searchName, SQLiteWrapper sqLiteWrapper) {
+    public UserLocalDBGetRecordsByNameRequest(RequestType requestType, IUserDataCallBack callBack, String searchName, SQLiteWrapper sqLiteWrapper) {
         super(requestType, callBack);
         this.searchName = searchName;
         this.sqLiteWrapper = sqLiteWrapper;
     }
 
+    @Override
     public String getSearchName() {
         return searchName;
-    }
-
-    public void setSearchName(String searchName) {
-        this.searchName = searchName;
     }
 
     @Override

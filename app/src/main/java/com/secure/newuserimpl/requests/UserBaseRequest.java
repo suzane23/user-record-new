@@ -5,8 +5,6 @@ import com.secure.newuserimpl.IUserDataCallBack;
 
 public abstract class UserBaseRequest implements IUserRequest {
 
-
-
     private Long requestID;
     private RequestType requestType;
     protected IUserDataCallBack callBack;
@@ -20,7 +18,15 @@ public abstract class UserBaseRequest implements IUserRequest {
         this.callBack = callBack;
     }
 
+    @Override
+    public String getSearchName() {
+        return null;
+    }
 
+    @Override
+    public String getDeletedName() {
+        return null;
+    }
 
     @Override
     public void run() {

@@ -3,7 +3,7 @@ package com.secure.newuserimpl;
 import android.content.Context;
 
 import com.secure.newuserimpl.requests.IUserRequest;
-import com.secure.newuserimpl.requests.UserGetRecordsByNameRequest;
+import com.secure.newuserimpl.requests.UserLocalDBGetRecordsByNameRequest;
 import com.secure.newuserimpl.requests.UserLocalDBAddRecordRequest;
 import com.secure.newuserimpl.requests.UserLocalDBDeleteRecordByNameRequest;
 import com.secure.newuserimpl.requests.UserLocalDBGetAllRecordsRequest;
@@ -59,7 +59,7 @@ public class UserDataLocalDBImpl extends UserDataBaseImpl{
     @Override
     public IUserRequest getRecordByName(String name, IUserDataCallBack callBack) {
 
-        IUserRequest request = new UserGetRecordsByNameRequest(IUserRequest.RequestType.REQUEST_GET_BY_NAME, callBack, name, sqLiteWrapper);
+        IUserRequest request = new UserLocalDBGetRecordsByNameRequest(IUserRequest.RequestType.REQUEST_GET_BY_NAME, callBack, name, sqLiteWrapper);
         executorService.submit(request);
 
         return request;

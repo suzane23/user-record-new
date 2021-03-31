@@ -5,11 +5,12 @@ import android.content.Context;
 import com.secure.newuserimpl.requests.IUserRequest;
 import com.secure.newuserimpl.requests.UserDeleteRecordByNameResponse;
 import com.secure.newuserimpl.requests.UserGetAllRecordsResponse;
-import com.secure.newuserimpl.requests.UserGetRecordsByNameRequest;
+import com.secure.newuserimpl.requests.UserLocalDBGetRecordsByNameRequest;
 import com.secure.newuserimpl.requests.UserGetRecordsByNameResponse;
 import com.secure.newuserimpl.requests.UserGetRecordsCountResponse;
 import com.secure.newuserimpl.requests.UserNetworkDBAddRecordRequest;
 import com.secure.newuserimpl.requests.UserNetworkDBDeleteRecordByNameRequest;
+import com.secure.newuserimpl.requests.UserNetworkDBGetRecordsByNameRequest;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -63,12 +64,13 @@ public class UserDataController implements IUserDataCallBack{
             break;
             case REQUEST_DELETE:{
                 UserDeleteRecordByNameResponse response = (UserDeleteRecordByNameResponse) userRequest.getResponse();
-                System.out.println(response.getCount() + " Records deleted with name " + ((UserNetworkDBDeleteRecordByNameRequest)userRequest).getDeletedName() );
+                System.out.println(response.getCount() + " Records deleted with name " + userRequest.getDeletedName());
             }
             break;
             case REQUEST_GET_ALL:{
                 UserGetAllRecordsResponse response = (UserGetAllRecordsResponse) userRequest.getResponse();
                 List<UserRecord> list = response.getRecordList();
+                System.out.println(list.size() + " records found ");
                 for (UserRecord rec: list) {
                     System.out.println(rec);
                 }
@@ -77,7 +79,7 @@ public class UserDataController implements IUserDataCallBack{
             case REQUEST_GET_BY_NAME:{
                 UserGetRecordsByNameResponse response = (UserGetRecordsByNameResponse) userRequest.getResponse();
                 List<UserRecord> list = response.getRecordList();
-                System.out.println(list.size() + " records found with name " + ((UserGetRecordsByNameRequest)userRequest).getSearchName());
+                System.out.println(list.size() + " records found with name " + userRequest.getSearchName());
                 for (UserRecord rec: list) {
                     System.out.println(rec);
                 }
