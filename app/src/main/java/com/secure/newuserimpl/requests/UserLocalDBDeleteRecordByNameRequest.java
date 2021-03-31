@@ -16,7 +16,7 @@ public class UserLocalDBDeleteRecordByNameRequest extends UserBaseRequest {
         this.deletedName = deletedName;
         this.sqLiteWrapper = sqLiteWrapper;
     }
-
+    @Override
     public String getDeletedName() {
         return deletedName;
     }

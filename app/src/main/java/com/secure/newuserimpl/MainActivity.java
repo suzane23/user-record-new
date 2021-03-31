@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UserDataController controller = new UserDataController(this, RecordFactory.RecordStorageType.LOCALDB);
+        UserDataController controller = new UserDataController(this, RecordFactory.RecordStorageType.NETWORKDB);
         UserRecord record = new UserRecord("Kuldeep");
         UserRecord record1 = new UserRecord("Neha");
         UserRecord record2 = new UserRecord("Anvay");
@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
 //        controller.add(record7);
 //        controller.add(record8);
 //        controller.add(record9);
-//        controller.getAllRecords();
-//       controller.deleteRecord("Avika");
-        controller.getRecordsByName("Shuchika");
+        controller.getAllRecords();
+       controller.deleteRecord("Shuchika");
+        controller.getRecordsByName("Saresh");
 //        controller.getRecordsCount();
     }
 }

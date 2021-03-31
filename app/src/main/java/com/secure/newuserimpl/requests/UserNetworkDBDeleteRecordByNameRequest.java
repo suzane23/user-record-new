@@ -17,7 +17,7 @@ public class UserNetworkDBDeleteRecordByNameRequest extends UserNetworkBaseReque
         super(requestType, callBack);
         this.deletedName = deletedName;
     }
-
+    @Override
     public String getDeletedName() {
         return deletedName;
     }

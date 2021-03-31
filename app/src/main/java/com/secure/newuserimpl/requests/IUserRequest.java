@@ -18,6 +18,9 @@ public interface IUserRequest extends Runnable{
     void setResponse(IUserResponse userResponse);
     IUserResponse getResponse();
 
+    String getSearchName();
+    String getDeletedName();
+
 //    IUserRequest execute();
     void onComplete();
 }

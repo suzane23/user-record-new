@@ -6,6 +6,7 @@ import com.secure.newuserimpl.requests.IUserRequest;
 import com.secure.newuserimpl.requests.UserNetworkDBAddRecordRequest;
 import com.secure.newuserimpl.requests.UserNetworkDBDeleteRecordByNameRequest;
 import com.secure.newuserimpl.requests.UserNetworkDBGetAllRecordsRequest;
+import com.secure.newuserimpl.requests.UserNetworkDBGetRecordsByNameRequest;
 import com.secure.newuserimpl.requests.UserNetworkDBGetRecordsCountRequest;
 
 public class UserDataNetDBImpl extends UserDataBaseImpl {
@@ -31,13 +32,17 @@ public class UserDataNetDBImpl extends UserDataBaseImpl {
 
     @Override
     public IUserRequest getRecordByName(String name, IUserDataCallBack callBack) {
-        return null;
+
+         final IUserRequest request = new UserNetworkDBGetRecordsByNameRequest(IUserRequest.RequestType.REQUEST_GET_BY_NAME, callBack, name);
+         executorService.submit(request);
+         return request;
     }
 
     @Override
     public IUserRequest deleteRecordByName(String name, IUserDataCallBack callBack) {
 
         final IUserRequest request = new UserNetworkDBDeleteRecordByNameRequest(IUserRequest.RequestType.REQUEST_DELETE, callBack, name);
+        executorService.submit(request);
 
         return request;
     }
